@@ -19,9 +19,7 @@ public class Polynomial {
             {
                 this.coefficients[i] = coefficients[i];
             }
-        }
-        System.out.println(this.coefficients);
-        
+        }      
     }
 
     // iv. 
