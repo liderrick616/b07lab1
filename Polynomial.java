@@ -10,10 +10,18 @@ public class Polynomial {
 
     // iii
     public Polynomial(double[] coefficients) {
-        //if(coefficients == null || coefficients.length == 0) {
-            //throw new IllegalArgumentException("Coefficients cannot be null or empty");
-        //}
-        this.coefficients = coefficients.clone();
+        if(coefficients == null || coefficients.length == 0) {
+
+        }
+        else{
+            this.coefficients = new double[coefficients.length];
+            for (int i = 0; i < coefficients.length; i++)
+            {
+                this.coefficients[i] = coefficients[i];
+            }
+        }
+        System.out.println(this.coefficients);
+        
     }
 
     // iv. 
