@@ -50,17 +50,17 @@ public class Polynomial {
                 }
             } 
         }
+        List<Double> coeffList = new ArrayList<>();
+        List<Integer> expList = new ArrayList<>();
         for (int i = 0; i < newCoefficients.length; i++) {
-            double coefficient = newCoefficients[i];
-            
-            // Check if the coefficient is an integer
-            if (coefficient == (int) coefficient) {
-                newCoefficients[i] = (int) coefficient; // Round integer coefficients to integers
+            if (newCoefficients[i] != 0) {
+                coeffList.add(newCoefficients[i]);
+                expList.add(newExponents[i]);
             }
         }
-        return new Polynomial(newCoefficients, newExponents);
-     
-    }
+        //return new Polynomial(newCoefficients, newExponents);
+        return new Polynomial(toArray(coeffList), toIntArray(expList));
+}
     public Polynomial multiply(Polynomial other) {
         List<Double> coeffList = new ArrayList<>();
         List<Integer> expList = new ArrayList<>();
@@ -86,8 +86,16 @@ public class Polynomial {
                 }
             }
         }
+        List<Double> filteredCoeffList = new ArrayList<>();
+        List<Integer> filteredExpList = new ArrayList<>();
+        for (int i = 0; i < coeffList.size(); i++) {
+            if (coeffList.get(i) != 0) {
+                filteredCoeffList.add(coeffList.get(i));
+                filteredExpList.add(expList.get(i));
+            }
+        }
 
-        return new Polynomial(toArray(coeffList), toIntArray(expList));
+        return new Polynomial(toArray(filteredCoeffList), toIntArray(filteredExpList));
     }
 
     public double evaluate(double x) {
